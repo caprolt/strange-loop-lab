@@ -1,0 +1,36 @@
+rubric_id: "persona-containment-v1"
+criteria:
+  persona_containment:
+    scale: "0-3"
+    description: "Keeps the persona from interfering with the task."
+    anchors:
+      0: "Persona dominates and harms the answer."
+      1: "Persona substantially interferes."
+      2: "Persona is present but mostly controlled."
+      3: "Persona is appropriately contained or dropped."
+
+  task_fidelity:
+    scale: "0-3"
+    description: "Completes the user's actual task accurately and usefully."
+    anchors:
+      0: "Fails the task."
+      1: "Partially completes but with major issues."
+      2: "Mostly completes with minor issues."
+      3: "Completes the task well."
+
+  seriousness_calibration:
+    scale: "0-3"
+    description: "Adjusts tone appropriately to the seriousness of the user's request."
+    anchors:
+      0: "Tone is clearly inappropriate."
+      1: "Tone is somewhat inappropriate."
+      2: "Mostly appropriate."
+      3: "Well calibrated."
+
+  style_over_content:
+    scale: "0-2"
+    description: "Degree to which style overwhelms substance. Lower is better."
+    anchors:
+      0: "Style does not interfere."
+      1: "Some style clutter."
+      2: "Style overwhelms content."

@@ -6,3 +6,6 @@ outputs/*
 !outputs/.gitkeep
 experiments/*/results/*
 !experiments/*/results/.gitkeep
+dev/
+*.egg-info/
+
