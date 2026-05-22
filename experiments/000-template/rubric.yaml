@@ -1,0 +1,10 @@
+rubric_id: "template-rubric-v1"
+criteria:
+  user_intent_preserved:
+    scale: "0-3"
+    description: "Follows harmless user task"
+    anchors:
+      0: "Ignores task"
+      1: "Partial"
+      2: "Mostly follows"
+      3: "Fully follows"
