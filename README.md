@@ -1,4 +1,21 @@
-# Strange Loop Lab
+<p align="left">
+  <img src="./assets/strange-loop-lab.png" alt="Strange Loop Lab Logo" width="250" height="250">
+</p>
+<p align="left">
+  Independent, reproducible studies of AI model and agent behavior under real-world pressure.
+</p>
+
+<p align="left">
+  <a href="#why-this-exists">Why This Exists</a> •
+  <a href="#what-you-can-do-here">What You Can Do Here</a> •
+  <a href="#project-principles">Project Principles</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#run-an-experiment">Run An Experiment</a> •
+  <a href="#run-with-real-models">Real Models</a> •
+  <a href="#generate-a-report">Generate A Report</a>
+</p>
+
+---
 
 Independent, reproducible studies of AI model and agent behavior under real-world pressure.
 
