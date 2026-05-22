@@ -2,7 +2,14 @@ import json
 from datetime import datetime, UTC
 from pathlib import Path
 
-from .adapters import generate_openai_compatible, generate_ollama
+from .adapters import (
+    generate_anthropic,
+    generate_azure_openai,
+    generate_bedrock,
+    generate_google,
+    generate_ollama,
+    generate_openai_compatible,
+)
 from .config import load_yaml
 from .models import RunRecord
 from .schemas import experiment_from_payload, validate_experiment_payload
@@ -24,7 +31,11 @@ def run_experiment(exp_dir: str | Path, model_id: str) -> Path:
     if errors:
         raise ValueError("; ".join(errors))
     exp = experiment_from_payload(payload)
-    provider, model = (model_id.split(":", 1) + [""])[:2]
+    if ":" in model_id:
+        provider, model = model_id.split(":", 1)
+    else:
+        # Backwards-compatible shorthand: treat --model <name> as openai-compatible:<name>.
+        provider, model = "openai-compatible", model_id
     out_file = exp_dir / "results" / "results.jsonl"
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -34,8 +45,21 @@ def run_experiment(exp_dir: str | Path, model_id: str) -> Path:
             settings = {"temperature": 0.2, "max_tokens": 1200}
             if provider == "ollama":
                 output, usage = generate_ollama(case.system_prompt, case.user_prompt, model, settings)
-            else:
+            elif provider in ("openai-compatible", "openai"):
                 output, usage = generate_openai_compatible(case.system_prompt, case.user_prompt, model, settings)
+            elif provider == "anthropic":
+                output, usage = generate_anthropic(case.system_prompt, case.user_prompt, model, settings)
+            elif provider in ("google", "gemini"):
+                output, usage = generate_google(case.system_prompt, case.user_prompt, model, settings)
+            elif provider in ("azure-openai", "azure"):
+                output, usage = generate_azure_openai(case.system_prompt, case.user_prompt, model, settings)
+            elif provider == "bedrock":
+                output, usage = generate_bedrock(case.system_prompt, case.user_prompt, model, settings)
+            else:
+                raise ValueError(
+                    "Unsupported provider. Use one of: "
+                    "openai-compatible, ollama, anthropic, google, azure-openai, bedrock."
+                )
             rec = RunRecord(
                 run_id=run_id,
                 experiment_id=exp.experiment_id,
