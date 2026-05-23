@@ -43,6 +43,25 @@ Supported `--model` formats:
 - `azure-openai:<deployment>`
 - `bedrock:<model_id>`
 
+List currently available models from live provider APIs:
+
+```bash
+strangeloop models
+```
+
+Query only one provider (repeat `--provider` to include multiple):
+
+```bash
+strangeloop models --provider anthropic
+strangeloop models --provider openai-compatible --provider google
+```
+
+Notes:
+
+- This command is live data, so output changes as providers add/remove models.
+- Providers requiring credentials will show an `ERROR` line if env vars are missing.
+- `azure-openai` lists model IDs available to the resource. `strangeloop run` still expects deployment names (`azure-openai:<deployment>`).
+
 OpenAI-compatible API (`openai-compatible:*`):
 
 ```bash
