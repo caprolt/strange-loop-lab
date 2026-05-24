@@ -6,7 +6,9 @@ Local-first human scoring portal for experiment run outputs.
 
 - discovers experiments from `experiments/*`
 - loads `cases.yaml` and `rubric.yaml`
-- loads run outputs from `outputs/runs/*.jsonl`
+- loads run outputs from both:
+  - `experiments/*/results/results.jsonl` (auto-discovered)
+  - `outputs/runs/*.jsonl`
 - lets a human score one run result at a time
 - saves append-only score records to `outputs/scores/<run-file-base>.scores.jsonl`
 - restores latest score state per `run_id` on reload
@@ -33,7 +35,7 @@ The scorer reads and writes these directories under the repository root:
 - `outputs/runs/`
 - `outputs/scores/`
 
-Create `outputs/runs/*.jsonl` run files from experiment outputs, then load them in the portal.
+Run files created by `strangeloop run` are discovered automatically from `experiments/*/results/results.jsonl`.
 
 ## Local-only warning
 

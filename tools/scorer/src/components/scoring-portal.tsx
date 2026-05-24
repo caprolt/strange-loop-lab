@@ -506,10 +506,10 @@ export function ScoringPortal() {
         <label>
           Run file
           <select value={selectedRunFile} onChange={(event) => setSelectedRunFile(event.target.value)}>
-            {runFiles.length === 0 && <option value="">No run files in outputs/runs</option>}
+            {runFiles.length === 0 && <option value="">No discovered run files yet</option>}
             {runFiles.map((runFile) => (
               <option key={runFile.file} value={runFile.file}>
-                {runFile.file} ({runFile.line_count} records)
+                {runFile.path} ({runFile.line_count} records)
               </option>
             ))}
           </select>
@@ -624,7 +624,8 @@ export function ScoringPortal() {
         <section className="emptyState">
           <h2>No run records match current filters.</h2>
           <p>
-            Add JSONL run outputs under <code>outputs/runs/</code>, then refresh this page.
+            Add JSONL run outputs under <code>outputs/runs/</code> or run experiments that write{" "}
+            <code>experiments/*/results/results.jsonl</code>, then refresh this page.
           </p>
         </section>
       ) : (

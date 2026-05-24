@@ -58,6 +58,7 @@ export interface RunResult {
 export interface RunFileSummary {
   file: string;
   path: string;
+  source: "outputs_runs" | "experiment_results";
   line_count: number;
   experiment_ids: string[];
   parse_errors: string[];
