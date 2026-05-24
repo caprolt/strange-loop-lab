@@ -28,6 +28,7 @@ AI systems are increasingly shaped by corporate incentives, safety policies, pro
 - Run behavior experiments across models.
 - Validate experiment case and rubric files.
 - Generate markdown reports from raw results and scores.
+- Score run outputs locally with the browser scoring portal (`tools/scorer`).
 - Add new experiments using templates.
 
 ## Project principles
@@ -139,3 +140,13 @@ strangeloop run experiments/007-sycophancy-under-pressure --model openai-compati
 ```bash
 strangeloop report experiments/001-user-intent-vs-brand-voice
 ```
+
+## Local scoring portal
+
+```bash
+cd tools/scorer
+npm install
+npm run dev
+```
+
+Then open `http://localhost:3100`.

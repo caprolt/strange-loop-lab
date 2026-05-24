@@ -2,8 +2,15 @@ __pycache__/
 *.pyc
 .venv/
 .pytest_cache/
-outputs/*
-!outputs/.gitkeep
+node_modules/
+.next/
+outputs/private/*
+!outputs/private/.gitkeep
+outputs/drafts/*
+!outputs/drafts/.gitkeep
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
 experiments/*/results/*
 !experiments/*/results/.gitkeep
 dev/
