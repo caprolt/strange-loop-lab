@@ -17,8 +17,6 @@
 
 ---
 
-Independent, reproducible studies of AI model and agent behavior under real-world pressure.
-
 ## Why this exists
 
 AI systems are increasingly shaped by corporate incentives, safety policies, product goals, and opaque training processes. Strange Loop Lab tests how those systems behave when user intent, uncertainty, authority, refusal boundaries, and tool use come into conflict.
